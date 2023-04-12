@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/dashboard', DashboardController::class);
+
+Route::resource('/blogs', BlogsController::class);
+
+Route::get('/normal', [DashboardController::class, 'index'])->name('normal.index');
